@@ -1,0 +1,30 @@
+﻿NODES:
+Studiaza {DA, NU}
+Dificultate {USOARA, GREA}
+Nota {MICA, MEDIE, MARE}
+Recomandare {SLABA, BUNA}
+
+EDGES:
+Studiaza -> Nota
+Dificultate -> Nota
+Nota -> Recomandare
+
+CPT:
+Studiaza:
+DA = 0.6
+NU = 0.4
+
+Dificultate:
+USOARA = 0.7
+GREA = 0.3
+
+Nota | Studiaza, Dificultate:
+Studiaza=DA, Dificultate=USOARA -> MICA:0.1, MEDIE:0.3, MARE:0.6
+Studiaza=DA, Dificultate=GREA   -> MICA:0.3, MEDIE:0.4, MARE:0.3
+Studiaza=NU, Dificultate=USOARA -> MICA:0.4, MEDIE:0.4, MARE:0.2
+Studiaza=NU, Dificultate=GREA   -> MICA:0.6, MEDIE:0.3, MARE:0.1
+
+Recomandare | Nota:
+Nota=MICA  -> SLABA:0.9, BUNA:0.1
+Nota=MEDIE -> SLABA:0.5, BUNA:0.5
+Nota=MARE  -> SLABA:0.1, BUNA:0.9
