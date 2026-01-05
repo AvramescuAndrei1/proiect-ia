@@ -1,0 +1,35 @@
+NODES:
+Teme {MULTE, PUTINE}
+Somn {MULT, PUTIN}
+Stress {RIDICAT, SCAZUT}
+Participare {PREZENT, ABSENT}
+Concentrare {BUNA, SLABA}
+
+EDGES:
+Teme -> Stress
+Somn -> Stress
+Stress -> Participare
+Stress -> Concentrare
+
+CPT:
+Teme:
+MULTE = 0.6
+PUTINE = 0.4
+
+Somn:
+MULT = 0.3
+PUTIN = 0.7
+
+Stress |
+Teme=MULTE, Somn=PUTIN -> RIDICAT:0.95, SCAZUT:0.05
+Teme=MULTE, Somn=MULT -> RIDICAT:0.6, SCAZUT:0.4
+Teme=PUTINE, Somn=PUTIN -> RIDICAT:0.7, SCAZUT:0.3
+Teme=PUTINE, Somn=MULT -> RIDICAT:0.1, SCAZUT:0.9
+
+Participare |
+Stress=RIDICAT -> PREZENT:0.3, ABSENT:0.7
+Stress=SCAZUT -> PREZENT:0.9, ABSENT:0.1
+
+Concentrare |
+Stress=RIDICAT -> BUNA:0.2, SLABA:0.8
+Stress=SCAZUT -> BUNA:0.8, SLABA:0.2
